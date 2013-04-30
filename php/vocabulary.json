@@ -1,0 +1,21 @@
+{
+    "podstatne": {
+        "m": ["muž", "chlap", "dub", "stroj"],
+        "z": ["žena", "dlaň", "ulica", "lolitka"],
+        "s": ["srdce", "auto", "bum"],
+        "p": ["autá", "stroje", "ženy"]
+    },
+    "pridavne": ["pekný", "zelený", "úžasný", "GreenManovský"],
+    "prirovnanie": ["GreenMan", "veľobloky v záhrade podhradia"],
+    "miesto": ["tu", "tam", "v záhradke"],
+    "sloveso": [
+        ["dáva", "dávajú"],
+        ["greenuje", "greenujú"]
+    ],
+    "cinnost": ["dávať", "greenovať"],
+    "trpne": ["dávajúc", "greenujúc"],
+    "slov_pod": ["sťa", "hľa"],
+    "slov_pri": ["ako", "jak", "by aj", "sťa"],
+    "slov_cin": ["robí", "činí"],
+    "koniec": ["A žili šťastne až do smrti"]
+}
