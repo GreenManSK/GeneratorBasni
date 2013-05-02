@@ -63,7 +63,6 @@ class Vers {
                     }, $vers);
         }
 
-
         /* Zhodorodovače */
         $vers = preg_replace_callback("~\[([^\]]+?):(.+?)\]~", function ($match) use (&$voc, &$zhody, $rody) {
                     if (!in_array($match[2], $rody)) {
@@ -84,17 +83,19 @@ class Vers {
                             case "z":
                                 $c = "á";
                                 break;
+                            case "o":
+                                $c = "o";
+                                break;
                             default:
                                 $c = "é";
                                 break;
                         }
                         $w = $voc->getRandomWord($match[1]);
-                        $w = mb_substr($w, 0, -1) . $c;
+                        $w = mb_substr($w, 0, mb_strlen($w)-2) . $c;
                     }
 
                     return $w;
                 }, $vers);
-
         /* Nahradenie [typ slova] */
         $vers = preg_replace_callback("~\[(.+?)\]~", function ($match) use (&$voc) {
                     $v = $voc->getVocabulary();

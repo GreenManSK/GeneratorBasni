@@ -92,7 +92,9 @@ class Slovnik {
             } else {
                 foreach ($vocabulary[$name] as $rod => $value) {
                     foreach ($vocabulary[$name][$rod] as $word) {
-                        $end = mb_substr($word, -1, mb_strlen($word));
+                        $end = mb_strtolower(mb_substr($word, -1, mb_strlen($word)));
+                        if ($end == "ý" || $end == "y" || $end == "í")
+                            $end = "i";
                         if (!isset($this->vocabularyByLetters[$name][$rod][$end]))
                             $this->vocabularyByLetters[$name][$rod][$end] = array();
                         $this->vocabularyByLetters[$name][$rod][$end][] = $word;
@@ -132,9 +134,11 @@ class Slovnik {
             if ($type == "sloveso" && !is_array($word)) {
                 $word = array($word, "...");
                 $end = mb_substr($word[0], -1, mb_strlen($word[0]));
+                if ($end == "ý" || $end == "y" || $end == "í")
+                    $end = "i";
             }
             else
-                $end = mb_substr($word, -1, mb_strlen($word));
+                $end = mb_strtolower(mb_substr($word, -1, mb_strlen($word)));
             $this->vocabulary[$type][] = $word;
             if (!isset($this->vocabularyByLetters[$type][$end]))
                 $this->vocabularyByLetters[$type][$end] = array();
@@ -199,6 +203,11 @@ class Slovnik {
         if (!isset($this->vocabulary[$type]) || ($rod != NULL && $type == "podstatne" && !isset($this->vocabulary[$type][$rod])) || count($this->vocabulary[$type]) == 0)
             return "...";
 
+        if ($end != NULL)
+            $end = mb_strtolower($end);
+        if ($end == "ý" || $end == "y" || $end == "í")
+            $end = "i";
+
         if ($type == "podstatne") {
             if ($rod == NULL)
                 $rod = $this->rody[array_rand($this->rody)];
@@ -221,8 +230,14 @@ class Slovnik {
             else
                 $word = $this->vocabulary[$type][$rod][array_rand($this->vocabulary[$type][$rod])];
         } else {
-            if ($end != NULL && (!isset($this->vocabularyByLetters[$type][$end]) || count($this->vocabularyByLetters[$type][$end]) == 0))
+            if ($end != NULL && (!isset($this->vocabularyByLetters[$type][$end]) || count($this->vocabularyByLetters[$type][$end]) == 0)) {
+                if ($type == "pridavne") {
+                    $w = $this->vocabulary["pridavne"][array_rand($this->vocabulary["pridavne"])];
+                    $w = mb_substr($w, 0, -1) . $end;
+                    return $w;
+                }
                 return "..." . $end;
+            }
             if ($end != NULL) {
                 if ($type != "sloveso")
                     $word = $this->vocabularyByLetters[$type][$end][array_rand($this->vocabularyByLetters[$type][$end])];

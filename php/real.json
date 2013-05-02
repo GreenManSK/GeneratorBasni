@@ -1,0 +1,19 @@
+{
+    "podstatne": {
+        "m": ["stan", "oheň", "zajatie", "svet", "čas","bozk","brat","bratia"],
+        "z": ["radosť", "iskra", "dcéra","končina","končatina"],
+        "s": ["ľudstvo","objatie"],
+        "p": ["kúzla", "ohne", "zajatia", "svety","milióny","končiny", "bosky"]
+    },
+    "pridavne": ["šťastný", "krásny", "jasná", "celý", "pobratý","drahý","božský","zemský"],
+    "prirovnanie": [],
+    "miesto": ["na radosti", "tam kde krídla prestieraš", "tam kde hviezdy sú"],
+    "sloveso": [
+        ["vystupuje","vystupujú"],
+        ["spojí", "spoja"],
+        ["rozdelí", "rozdelia"],
+        ["obíme","obímu"]
+    ],
+    "cinnost": ["vystupovať", "spojovať", "rozdelovať","obímanie"],
+    "trpne": ["vystupujúc", "spojovac", "rozdelovac","obímajúc"]
+}

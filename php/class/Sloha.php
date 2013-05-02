@@ -20,20 +20,20 @@ class Sloha {
      */
     private $kostra = array(
         "normal" => array(
-            "miesto" => "(Tam :2)kde ([pridavne:1]:2) [podstatne:1] [sloveso:1]",
+            "miesto" => "(Tam :2)kde ([pridavne:1]:2) [podstatne:1] [sloveso:1] [pridavne:o] [podstatne]",
             "popis" => "[podstatne] [slov_pri] {[prirovnanie]/ ([pridavne]:4) [podstatne]}",
             "cinnost" => "[pridavne:s] je [cinnost] [podstatne]",
             "konstatovanie" => "[podstatne] jak {[prirovnanie]/ ([pridavne]:4) [podstatne]} ([trpne]:5)",
-            "popisMiesto" => "{Tu/Tam/Hentuto} [pridavne:s] [miesto]",
+            "popisMiesto" => "{Tu/Tam/Hentuto} [pridavne:s] [miesto] [slov_pri] [podstatne]",
             "vec" => "[pridavne:1] [podstatne:1]",),
         "love" => array(
             "siAko1" => "(Ty:3) si ako [pridavne:1] [podstatne:1]",
-            "siAko2" => "(Ty:3) si ako [prirovnanie]",
+//            "siAko2" => "(Ty:3) si ako [prirovnanie],",
             "milujemAko1" => "Milujem ťa ako [pridavne:1] [podstatne:1]",
-            "milujemAko2" => "Milujem ťa ako [prirovnanie]",
             "siTak1" => "Si tak [pridavne:z] ako [podstatne]",
-            "siTak2" => "Si tak [pridavne:z] ako [prirovnanie]",
-            "milujemKeď" => "Milujem keď [sloveso]š [miesto]",
+            "siTak2" => "Si tak ako [prirovnanie] [pridavne:z]",
+            "milujemKeď" => "Milujem keď [sloveso]š [podstatne]",
+            "krasna" => "Si krásna ako [pridavne:1] [podstatne:1]"
         )
     );
 
@@ -76,25 +76,68 @@ class Sloha {
             $this->rhyme = rand(1, 3);
 
         $verse = $this->getVerse();
-                
+
         $voc = clone $this->vocabulary;
         $v = new Vers($voc);
 
+        $c = 10;
         if ($this->rhyme == self::R_AABB) {
-            $verse[0] = $v->podlaNavrhu($verse[0]);
-            $verse[1] = $v->podlaNavrhu($verse[1], mb_substr($verse[0], -1, mb_strlen($verse[0])));
-            $verse[2] = $v->podlaNavrhu($verse[2]);
-            $verse[3] = $v->podlaNavrhu($verse[3], mb_substr($verse[2], -1, mb_strlen($verse[2])));
+            for ($i = 0; $i < $c; $i++) {
+                $verse[0] = $v->podlaNavrhu($verse[0]);
+                $l = mb_substr($verse[0], -1, mb_strlen($verse[0]));
+                $l = $l == "," ? NULL : $l;
+                $verse[1] = $v->podlaNavrhu($verse[1], $l);
+                $last = mb_substr($verse[1], -2, mb_strlen($verse[1]) - 2);
+                if ($last != ".")
+                    break;
+            }
+            for ($i = 0; $i < $c; $i++) {
+                $verse[2] = $v->podlaNavrhu($verse[2]);
+                $l = mb_substr($verse[2], -1, mb_strlen($verse[2]));
+                $l = $l == "," ? NULL : $l;
+                $verse[3] = $v->podlaNavrhu($verse[3], $l);
+                $last = mb_substr($verse[3], -2, mb_strlen($verse[3]) - 2);
+                if ($last != ".")
+                    break;
+            }
         } elseif ($this->rhyme == self::R_ABAB) {
-            $verse[0] = $v->podlaNavrhu($verse[0]);
-            $verse[1] = $v->podlaNavrhu($verse[1]);
-            $verse[2] = $v->podlaNavrhu($verse[2], mb_substr($verse[0], -1, mb_strlen($verse[0])));
-            $verse[3] = $v->podlaNavrhu($verse[3], mb_substr($verse[1], -1, mb_strlen($verse[1])));
+            for ($i = 0; $i < $c; $i++) {
+                $verse[0] = $v->podlaNavrhu($verse[0]);
+                $l = mb_substr($verse[0], -1, mb_strlen($verse[0]));
+                $l = $l == "," ? NULL : $l;
+                $verse[2] = $v->podlaNavrhu($verse[2], $l);
+                $last = mb_substr($verse[2], -2, mb_strlen($verse[2]) - 2);
+                if ($last != ".")
+                    break;
+            }
+            for ($i = 0; $i < $c; $i++) {
+                $verse[1] = $v->podlaNavrhu($verse[1]);
+                $l = mb_substr($verse[1], -1, mb_strlen($verse[1]));
+                $l = $l == "," ? NULL : $l;
+                $verse[3] = $v->podlaNavrhu($verse[3], $l);
+                $last = mb_substr($verse[3], -2, mb_strlen($verse[3]) - 2);
+                if ($last != ".")
+                    break;
+            }
         } elseif ($this->rhyme == self::R_ABBA) {
-            $verse[0] = $v->podlaNavrhu($verse[0]);
-            $verse[1] = $v->podlaNavrhu($verse[1]);
-            $verse[2] = $v->podlaNavrhu($verse[2], mb_substr($verse[1], -1, mb_strlen($verse[1])));
-            $verse[3] = $v->podlaNavrhu($verse[3], mb_substr($verse[0], -1, mb_strlen($verse[0])));
+            for ($i = 0; $i < $c; $i++) {
+                $verse[0] = $v->podlaNavrhu($verse[0]);
+                $l = mb_substr($verse[0], -1, mb_strlen($verse[0]));
+                $l = $l == "," ? NULL : $l;
+                $verse[3] = $v->podlaNavrhu($verse[3], $l);
+                $last = mb_substr($verse[3], -2, mb_strlen($verse[3]) - 2);
+                if ($last != ".")
+                    break;
+            }
+            for ($i = 0; $i < $c; $i++) {
+                $verse[1] = $v->podlaNavrhu($verse[1]);
+                $l = mb_substr($verse[1], -1, mb_strlen($verse[1]));
+                $l = $l == "," ? NULL : $l;
+                $verse[2] = $v->podlaNavrhu($verse[2], $l);
+                $last = mb_substr($verse[3], -2, mb_strlen($verse[3]) - 2);
+                if ($last != ".")
+                    break;
+            }
         }
 
         return $verse;
@@ -107,31 +150,29 @@ class Sloha {
     public function getVerse() {
         if ($this->type == self::T_RAND)
             $this->type = rand(1, 3);
-        $verse = array('','','','');
-        
-        if ($this->type == self::T_LOVE) {
-            for ($i=0;$i<4;$i++) {
-                $verse[$i] = $this->kostra['love'][array_rand($this->kostra['love'])];
-            }
-        } elseif ($this->type == self::T_EPIC) {
-            $epic = $this->kostra['normal'];
-            unset($epic["vec"]);
-            for ($i=0;$i<4;$i++) {
-                $verse[$i] = $epic[array_rand($epic)];
-            }
+        $verse = array('', '', '', '');
+
+        if ($this->type == self::T_LOVE)
+            $kostra = $this->kostra['love'];
+        elseif ($this->type == self::T_EPIC) {
+            $kostra = $this->kostra['normal'];
+            unset($kostra["vec"]);
         } elseif ($this->type == self::T_LYRIC) {
-            $lyric = $this->kostra['normal'];
-            unset($lyric["cinnost"]);
-            unset($lyric["popis"]);
-            for ($i=0;$i<4;$i++) {
-                $verse[$i] = $lyric[array_rand($lyric)];
-            }
+            $kostra = $this->kostra['normal'];
+            unset($kostra["cinnost"]);
+            unset($kostra["popis"]);
         }
-        
+
+        for ($i = 0; $i < 4; $i++) {
+            $key = array_rand($kostra);
+
+            $verse[$i] = $kostra[array_rand($kostra)];
+        }
+
         return $verse;
     }
 
-        /**
+    /**
      * Zmení typ rýmu
      * @param type $rhyme
      * @return \Sloha

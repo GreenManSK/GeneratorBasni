@@ -1,21 +1,32 @@
 {
     "podstatne": {
-        "m": ["muž", "chlap", "dub", "stroj"],
-        "z": ["žena", "dlaň", "ulica", "lolitka"],
-        "s": ["srdce", "auto", "bum"],
-        "p": ["autá", "stroje", "ženy"]
+        "m": ["chlap", "dub", "stroj", "programátor", "devbook", "Titter", "pes", "počítač", "mobil", "Android", "sek", "krýk", "Šimaš"],
+        "z": ["žena", "dlaň", "ulica", "lolitka", "gitara", "rovnica", "matematika", "neznáma", "mačka", "doska"],
+        "s": ["srdce", "auto", "bum", "OOP", "Pí", "PHP", "dieťa", "bremeno", "kikiriký", "kukurukú", "kormidlo", "verv", "Oslo"],
+        "p": ["autá", "stroje", "ženy", "počítače", "premeny", "polovodiče", "funckie", "objekty", "ihli"]
     },
-    "pridavne": ["pekný", "zelený", "úžasný", "GreenManovský"],
-    "prirovnanie": ["GreenMan", "veľobloky v záhrade podhradia"],
-    "miesto": ["tu", "tam", "v záhradke"],
+    "pridavne": ["pekný", "zelený", "úžasný", "GreenManovský", "objektový", "pevný", "zamilovaný", "premilovaný", "mŕtvy", "zabitý", "vypitvaný", "hrubý", "dlhý", "tvrdý", "tenký", "žalostný", "čačavý", "ňuňavý", "Azorovský"],
+    "prirovnanie": ["GreenMan", "veľobloky v záhrade podhradia", "pískot kuriatka v počítači", "močaristé príťaže bútľaviny", "ahém hmm", "ja", "PHP objektovo orientované", "prierez rovinou pozdĺž priamky CM", "dvanásť jednookých mesiacov"],
+    "miesto": ["tu", "tam", "v záhradke", "na ceste", "v predbylí", "okolo mňa", "na rázcestí", "za Rámľami", "pred okonom", "za oknom", "na ukazateli 42b", "v lese"],
     "sloveso": [
         ["dáva", "dávajú"],
-        ["greenuje", "greenujú"]
+        ["greenuje", "greenujú"],
+        ["programuje", "programujú"],
+        ["pije", "pijú"],
+        ["počuje","počujú"],
+        ["hľadí","hľadia"],
+        ["stojí","stoja"],
+        ["začúva","začúvajú"],
+        ["ničuje","ničujú"],
+        ["píše","píšu"],
+        ["zveľaďuje","zveľaďujú"],
+        ["ničí","ničia"],
+        ["seká","sekajú"]
     ],
-    "cinnost": ["dávať", "greenovať"],
-    "trpne": ["dávajúc", "greenujúc"],
-    "slov_pod": ["sťa", "hľa"],
+    "cinnost": ["dávať", "greenovať","programovať","piť","počuť","hľadieť","stáť","začúvať","ničovať","písať","zveľaďovať","ničiť"],
+    "trpne": ["dávajúc", "greenujúc","programujúc","pijúc","počujúc","hľaďac","stojac", "začúvajúc", "ničujúc", "písiac", "zveľaďujúc", "ničujúc"],
+    "slov_pod": ["sťa", "hľa", "ľaľa"],
     "slov_pri": ["ako", "jak", "by aj", "sťa"],
     "slov_cin": ["robí", "činí"],
-    "koniec": ["A žili šťastne až do smrti"]
+    "koniec": ["A žili šťastne až do smrti", "'Bo tak to musí byť", "A prečo nie", "Zbohomdajúc papapa"]
 }
